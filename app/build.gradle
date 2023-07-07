@@ -55,11 +55,12 @@ android {
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
-
-    lintOptions {
-        checkReleaseBuilds false
+    namespace 'com.simplemobiletools.contacts.pro'
+    lint {
         abortOnError false
+        checkReleaseBuilds false
     }
+
 }
 
 dependencies {

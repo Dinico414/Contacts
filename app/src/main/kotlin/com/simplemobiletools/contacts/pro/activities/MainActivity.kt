@@ -45,6 +45,7 @@ import me.grantland.widget.AutofitHelper
 import java.io.FileOutputStream
 import java.io.OutputStream
 import java.util.*
+import android.graphics.Color
 
 class MainActivity : SimpleActivity(), RefreshContactsListener {
     private val PICK_IMPORT_SOURCE_INTENT = 1
@@ -60,6 +61,30 @@ class MainActivity : SimpleActivity(), RefreshContactsListener {
     private var storedStartNameWithSurname = false
     private var storedFontSize = 0
     private var storedShowTabs = 0
+
+
+    fun mixColors(color1: Int, color2: Int, ratio: Double): Int {
+        val inverseRatio = 1 - ratio
+
+        // Extract the RGB values from color1
+        val red1 = Color.red(getProperBackgroundColor())
+        val green1 = Color.green(getProperBackgroundColor())
+        val blue1 = Color.blue(getProperBackgroundColor())
+
+        // Extract the RGB values from color2
+        val red2 = Color.red(0x888888)
+        val green2 = Color.green(0x888888)
+        val blue2 = Color.blue(0x888888)
+
+        // Mix the RGB values based on the given ratio
+        val mixedRed = (red1 * 0.75 + red2 * 0.25).toInt()
+        val mixedGreen = (green1 * 0.75 + green2 * 0.25).toInt()
+        val mixedBlue = (blue1 * 0.75 + blue2 * 0.25).toInt()
+
+        // Combine the mixed RGB values into a single color
+        return Color.rgb(mixedRed, mixedGreen, mixedBlue)
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -145,6 +170,11 @@ class MainActivity : SimpleActivity(), RefreshContactsListener {
                 refreshContacts(ALL_TABS_MASK)
             }
         }
+
+        view_pager.background.applyColorFilter(mixColors(0,0,0.75))
+
+        main_tabs_holder.background.applyColorFilter(mixColors(0,0,0.75))
+
 
         val dialpadIcon = resources.getColoredDrawableWithColor(R.drawable.ic_dialpad_vector, properPrimaryColor.getContrastColor())
         main_dialpad_button.apply {

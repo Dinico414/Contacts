@@ -33,10 +33,12 @@
             android:layout_height="@dimen/dialpad_button_size"
             android:layout_marginStart="28dp"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/circle_background"
+            android:background="@drawable/button_background_rounded"
             android:contentDescription="@string/dialpad"
             android:elevation="@dimen/medium_margin"
             android:padding="@dimen/activity_margin"
+            android:scrollbarAlwaysDrawHorizontalTrack="true"
+            android:scrollbars="vertical"
             android:src="@drawable/ic_dialpad_vector"
             app:layout_constraintBottom_toTopOf="@+id/main_tabs_holder"
             app:layout_constraintStart_toStartOf="parent" />

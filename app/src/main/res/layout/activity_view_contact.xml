@@ -4,14 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/contact_wrapper"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/tile_background"
+    android:layout_marginHorizontal="15dp"
+    android:layout_marginBottom="15dp"
+    android:backgroundTint="@android:color/system_surface_bright_dark"
+    android:clipToOutline="true"
+    tools:ignore="NewApi">
 
     <ScrollView
         android:id="@+id/contact_scrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <RelativeLayout
             android:id="@+id/contact_holder"
@@ -25,7 +31,11 @@
                 android:layout_marginBottom="@dimen/normal_margin"
                 android:contentDescription="@string/change_photo"
                 android:scaleType="centerCrop"
-                tools:src="@drawable/ic_person_vector" />
+                tools:src="@drawable/ic_person_vector"
+                android:background="@drawable/tile_background"
+                android:clipToOutline="true"
+                android:layout_marginTop="100dp"
+                android:layout_marginHorizontal="10dp" />
 
             <ImageView
                 android:id="@+id/contact_photo_bottom_shadow"
@@ -33,7 +43,8 @@
                 android:layout_height="@dimen/top_shadow_height"
                 android:layout_alignBottom="@+id/contact_photo"
                 android:background="@drawable/gradient_background"
-                android:contentDescription="@null" />
+                android:contentDescription="@null"
+                android:alpha="0"/>
 
             <ImageView
                 android:id="@+id/contact_toggle_favorite"
@@ -80,6 +91,8 @@
                     android:contentDescription="@string/call_contact"
                     android:paddingStart="@dimen/small_margin"
                     android:paddingEnd="@dimen/small_margin"
+                    android:scaleX="0.8"
+                    android:scaleY="0.8"
                     android:scaleType="fitCenter"
                     android:src="@drawable/ic_phone_vector" />
 
@@ -401,6 +414,16 @@
                 android:textSize="@dimen/bigger_text_size"
                 android:visibility="gone" />
 
+            <ImageView
+                android:id="@+id/contact_photo_top_shadow"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/top_shadow_height"
+                android:layout_marginTop="-2dp"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/gradient_background_flipped"
+                android:contentDescription="@null"
+                android:alpha="0"/>
+
         </RelativeLayout>
     </ScrollView>
 
@@ -415,18 +438,10 @@
         android:scaleType="fitCenter"
         android:visibility="gone" />
 
-    <ImageView
-        android:id="@+id/contact_photo_top_shadow"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/top_shadow_height"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/gradient_background_flipped"
-        android:contentDescription="@null" />
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/contact_appbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         android:layout_alignParentTop="true"
         android:background="@android:color/transparent"
         android:elevation="0dp"
